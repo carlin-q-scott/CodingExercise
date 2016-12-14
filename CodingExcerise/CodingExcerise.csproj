@@ -43,12 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CardDeck.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Interfaces\ICardDeck.cs" />
+    <Compile Include="Interfaces\IPlayingCard.cs" />
+    <Compile Include="netfx\System\Guard.cs" />
+    <Compile Include="PlayingCard.cs" />
+    <Compile Include="PlayingCardSuit.cs" />
+    <Compile Include="PlayingCardValue.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
