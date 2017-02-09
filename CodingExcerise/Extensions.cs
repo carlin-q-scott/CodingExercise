@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Xml.Linq;
+using FunctionalExtensions;
 
 namespace CodingExcerise
 {
@@ -61,6 +63,18 @@ namespace CodingExcerise
         public static IEnumerable<T> Except<T>(this IEnumerable<T> source, T valueToExclude)
         {
             return source.Except(new[] {valueToExclude});
+        }
+
+        /// <summary>
+        /// Remove one item from the Enumerable whose value matches valueToExclude
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="source">IEnumerable of T to opperate on</param>
+        /// <param name="valueToExclude">a value to exclude from the IEnumerable of T</param>
+        /// <returns></returns>
+        public static IEnumerable<T> ExceptOne<T>(this IEnumerable<T> source, T valueToExclude)
+        {
+            return source.ToList().Tee( t=>t.Remove(valueToExclude) ).ToList();
         }
     }
 }

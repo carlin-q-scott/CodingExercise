@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CodingExcerise;
 using FluentAssertions;
+using FunctionalExtensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CodingExcersizeTests
@@ -173,13 +174,13 @@ namespace CodingExcersizeTests
         [TestMethod]
         public void Shuffle_MultipleShuffles_ShouldYieldDifferentResultsEachTime()
         {
+            
             var previousShuffles = new List<string>();
             var deck = new CardDeck();
             
-            // pseudo random number of times
-            var rand = new Random(DateTime.Now.Millisecond);
+            var numShuffles = 100;
 
-            for (int i = 0; i < rand.Next(0, 10); i++)
+            for (int i = 0; i < numShuffles; i++)
             {
                 deck.Shuffle();
                 previousShuffles.Add(deck.ToString().RemoveAllWhiteSpace());
@@ -188,10 +189,9 @@ namespace CodingExcersizeTests
             previousShuffles.ForEach(s => s.Dump());
 
             // no previous shuffle should contain the shuffle result I'm looking at
-            previousShuffles.All(ps => !previousShuffles.Except(ps).Contains(ps))
+            previousShuffles.All(ps => !previousShuffles.ExceptOne(ps).Any(p => p.Equals(ps) ) )
                 .Should()
                 .BeTrue("Shuffling should yield different results every time");
-            
         }
 
         [TestMethod]
