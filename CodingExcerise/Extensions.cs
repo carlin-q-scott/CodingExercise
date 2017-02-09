@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml.Linq;
-using FunctionalExtensions;
 
 namespace CodingExcerise
 {
@@ -75,6 +74,12 @@ namespace CodingExcerise
         public static IEnumerable<T> ExceptOne<T>(this IEnumerable<T> source, T valueToExclude)
         {
             return source.ToList().Tee( t=>t.Remove(valueToExclude) ).ToList();
+        }
+
+        private static T Tee<T>(this T @this, Action<T> action)
+        {
+            action(@this);
+            return @this;
         }
     }
 }

@@ -4,7 +4,7 @@
     {
         PlayingCardSuit Suit { get; }
 
-        PlayingCardValue SuitValue { get; }
+        PlayingCardValue SuitValue { get; } //CardValue, not SuitValue
 
     }
 }

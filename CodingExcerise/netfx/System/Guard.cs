@@ -60,23 +60,14 @@ static class Guard
     /// <exception cref="System.ArgumentException">The <paramref name="value"/> is null or an empty string.</exception>
     public static void NotNullOrEmpty(Expression<Func<string>> reference, string value)
     {
+        //todo: why not use string.NotNullOrEmpty()?
         NotNull<string>(reference, value);
         if (value.Length == 0)
             throw new ArgumentException("Parameter cannot be empty.", GetParameterName(reference));
     }
 
-    /// <summary>
-    /// Ensures the given string <paramref name="value"/> is valid according 
-    /// to the <paramref name="validate"/> function. Throws <see cref="ArgumentNullException"/> 
-    /// otherwise.
-    /// </summary>
-    /// <exception cref="System.ArgumentException">The <paramref name="value"/> is not valid according 
-    /// to the <paramref name="validate"/> function.</exception>
-    public static void IsValid<T>(Expression<Func<T>> reference, T value, Func<T, bool> validate, string message)
-    {
-        if (!validate(value))
-            throw new ArgumentException(message, GetParameterName(reference));
-    }
+    //Todo: fancy and demonstrative of skill but wholly unecesary
+    
 
     /// <summary>
     /// Ensures the given string <paramref name="value"/> is valid according 
