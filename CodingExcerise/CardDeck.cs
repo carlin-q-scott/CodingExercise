@@ -2,18 +2,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Http;
-using System.Runtime.Remoting.Messaging;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using FunctionalExtensions;
 
 namespace CodingExcerise
 {
-    public class CardDeck : ICardDeck, IEnumerable<IPlayingCard>
+    public class CardDeck : ICardDeck
     {
         private List<IPlayingCard> _currentCardState;
-        private Random _random;
+        private Random _random; //Todo: how random would two different decks be when compared to eachother?
         private readonly int _numSuits;
         private readonly int _suitSize;
         private readonly int _numJokers;
@@ -71,6 +67,7 @@ namespace CodingExcerise
 
         }
 
+        //Todo: What are the trade-offs between this and fisher-yates shuffle?
         /// <summary>
         /// Shuffle is really just a "random" sort...
         /// </summary>
@@ -80,5 +77,6 @@ namespace CodingExcerise
         /// Sort using linq
         /// </summary>
         public void Sort() => _currentCardState = _currentCardState.OrderBy(c => c.Suit).ThenBy(c => c.SuitValue).ToList();
+
     }
 }

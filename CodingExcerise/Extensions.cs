@@ -49,6 +49,7 @@ namespace CodingExcerise
 
         public static string RemoveAllWhiteSpace(this string str)
         {
+            //todo: what do brackets do in regex's?
             return Regex.Replace(str, @"[\s]+", String.Empty);
         }
 
@@ -73,6 +74,7 @@ namespace CodingExcerise
         /// <returns></returns>
         public static IEnumerable<T> ExceptOne<T>(this IEnumerable<T> source, T valueToExclude)
         {
+            //todo: why the ToList?
             return source.ToList().Tee( t=>t.Remove(valueToExclude) ).ToList();
         }
 

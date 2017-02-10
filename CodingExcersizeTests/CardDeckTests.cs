@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using CodingExcerise;
 using FluentAssertions;
-using FunctionalExtensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace CodingExcersizeTests
@@ -170,6 +169,7 @@ namespace CodingExcersizeTests
             deck.ToString().RemoveAllWhiteSpace().Should().NotBe(FullDeckString.RemoveAllWhiteSpace());
         }
 
+        //Todo: Could this fail, how would you go about preventing that?
         // complicated for a test but how do you test a shuffle?
         [TestMethod]
         public void Shuffle_MultipleShuffles_ShouldYieldDifferentResultsEachTime()
